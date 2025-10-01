@@ -51,7 +51,7 @@ export default function OurBusiness() {
                 Our parent company, <strong>Nader Distilleries Co.</strong>, has
                 <br />
                 been a symbol of tradition and mastery since 1950 in
-                <br /> Lebanon. Renowned for its legendary arak, Lebanon's
+                <br /> Lebanon. Renowned for its legendary arak, Lebanon&apos;s
                 <br />
                 national beverage, <strong>Nader Distilleries</strong> has grown
                 into

@@ -1,0 +1,112 @@
+// Products and Services Section Styles
+.productsAndServices {
+  padding: 6rem 0; // Extra padding for better visual separation
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.container {
+  max-width: 80%; // Slightly narrower for this section
+  margin: 0 auto;
+  padding: 0 2rem; // Same padding as navbar
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.content {
+  margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+}
+
+.textContent {
+  text-align: left; // Left align to match section title
+  line-height: 1.2;
+  font-size: clamp(12px, 1.3vw, 20px);
+  color: var(--text-primary);
+  margin-bottom: 4rem;
+
+  p {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    font-weight: 700; // Bold weight
+    color: var(--brand-black); // Keep company names black and bold
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spiritsIllustration {
+  width: 100%;
+  height: auto;
+  max-width: 95%;
+
+  @media (max-width: 768px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 400px;
+  }
+}
+
+.imageTitle {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--brand-red);
+  text-align: center;
+  letter-spacing: 0.3em;
+  margin-top: 1rem;
+  line-height: 1;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+// No additional responsive adjustments needed - text flows naturally
+
+// Loading state for image
+.spiritsIllustration {
+  transition: opacity 0.3s ease;
+}

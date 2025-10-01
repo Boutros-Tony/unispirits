@@ -1,0 +1,162 @@
+// Brand Colors
+:root {
+  --brand-red: #cb0d1b;
+  --brand-black: #000000;
+  --brand-white: #ffffff;
+
+  // Background colors
+  --bg-primary: var(--brand-white);
+  --bg-secondary: var(--brand-black);
+
+  // Text colors
+  --text-primary: var(--brand-black);
+  --text-secondary: var(--brand-red);
+  --text-inverse: var(--brand-white);
+}
+
+// Reset and base styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 0; // No padding needed - slider starts from top
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Typography Style Guide - Modular System
+.title {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+
+  // Size modifiers
+  &.large {
+    font-size: 35px;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+
+  &.medium {
+    font-size: 33px;
+    letter-spacing: -0.01em;
+
+    @media (max-width: 768px) {
+      font-size: 26px;
+    }
+  }
+
+  // Color modifiers
+  &.red {
+    color: var(--brand-red);
+  }
+
+  &.black {
+    color: var(--brand-black);
+  }
+
+  &.white {
+    color: var(--brand-white);
+  }
+}
+
+// Specialty Font Classes
+.signature {
+  font-family: var(--font-photograph), cursive;
+  font-weight: 400;
+  line-height: 1.1;
+
+  &.large {
+    font-size: 48px;
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
+
+  &.medium {
+    font-size: 32px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  // Color modifiers work the same
+  &.red {
+    color: var(--brand-red);
+  }
+  &.black {
+    color: var(--brand-black);
+  }
+  &.white {
+    color: var(--brand-white);
+  }
+}
+
+.mohave {
+  font-family: var(--font-mohave), sans-serif;
+
+  &.light {
+    font-weight: 300;
+  }
+
+  &.italic {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  // Size modifiers
+  &.large {
+    font-size: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  &.medium {
+    font-size: 18px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  // Color modifiers work the same
+  &.red {
+    color: var(--brand-red);
+  }
+  &.black {
+    color: var(--brand-black);
+  }
+  &.white {
+    color: var(--brand-white);
+  }
+}
+
+// Swiper pagination removed - no dots needed

@@ -1,0 +1,119 @@
+// Footer Component Styles
+.footer {
+  width: 100%;
+  margin-top: 0; // No margin from previous sections
+}
+
+// Footer Visual Image Section
+.footerImageSection {
+  width: 100%;
+  display: block;
+  line-height: 0; // Remove any gaps below image
+}
+
+.footerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+// Black Footer Content Section
+.footerContent {
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  padding: 2rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    gap: 0.8rem;
+  }
+}
+
+// Footer Links Section (First Row)
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+.link {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--brand-white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--brand-red);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+}
+
+// Footer Info Section (Second & Third Rows)
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.copyright {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--brand-white);
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+.disclaimer {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+}

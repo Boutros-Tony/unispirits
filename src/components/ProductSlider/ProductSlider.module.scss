@@ -1,0 +1,133 @@
+// Product Slider Section Styles
+.productSlider {
+  padding: 6rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: left;
+  h2 {
+    font-weight: 100 !important;
+  }
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+// Swiper Container
+.swiper {
+  width: 80%;
+  max-width: 1200px;
+  margin: 3rem auto 0 auto;
+  position: relative;
+
+  // Prevent partial slides from showing
+  overflow: hidden;
+
+  :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  :global(.swiper-slide) {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+  }
+
+  @media (max-width: 768px) {
+    width: calc(100% - 6rem);
+    margin-top: 2rem;
+  }
+}
+
+// Individual Slide
+.slide {
+  width: 100% !important;
+  height: auto;
+  display: flex !important;
+  align-items: stretch;
+}
+
+// Products Grid (3 products per slide)
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 968px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
+}
+
+// Custom Navigation Arrows - Same style as OurBrands
+.swiperButtonPrev,
+.swiperButtonNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #9a9696;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--brand-black);
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.swiperButtonPrev {
+  left: -4rem;
+
+  @media (max-width: 768px) {
+    left: -3rem;
+  }
+}
+
+.swiperButtonNext {
+  right: -4rem;
+
+  @media (max-width: 768px) {
+    right: -3rem;
+  }
+}

@@ -1,0 +1,163 @@
+// Vision Mission Section Styles
+.visionMission {
+  padding: 4rem 0 0 0; // Only top padding since it's part of ProductsAndServices
+
+  @media (max-width: 768px) {
+    padding: 3rem 0 0 0;
+  }
+}
+
+.container {
+  max-width: 70%; // Changed to 1200px as requested
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0; // Remove gap, we'll use the divider
+  padding: 1.5rem 0;
+
+  &:first-child {
+    padding-top: 1.5rem; // Less padding for first item
+  }
+
+  // Reverse layout for alternating items (icon on right)
+  &.itemReverse {
+    flex-direction: row-reverse;
+
+    // Right align text when icon is on the right
+    .content {
+      text-align: right;
+    }
+  }
+
+  // Left align text when icon is on the left (default)
+  .content {
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 0;
+
+    &:first-child {
+      padding-top: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+  }
+}
+
+.iconContainer {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem; // Slight offset to align with content
+  overflow: hidden; // Prevent icon distortion
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.divider {
+  width: 2px;
+  background-color: #707070; // Vertical border between icon and content
+  margin: 0 1rem; // Spacing on both sides
+  align-self: stretch; // Full height of the item
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 1.5rem;
+  }
+}
+
+.icon {
+  max-width: 80px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain; // Ensure icons maintain aspect ratio and don't get distorted
+
+  @media (max-width: 768px) {
+    max-width: 35px;
+    max-height: 35px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 30px;
+    max-height: 30px;
+  }
+}
+
+.content {
+  flex: 1;
+
+  // Ensure proper spacing for text alignment
+  &:first-child {
+    margin-right: auto;
+  }
+}
+
+.title {
+  font-family: var(--font-mohave), sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px !important; // Bigger title as shown in screenshot
+  color: var(--brand-red);
+  text-transform: uppercase;
+
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+}
+
+.text {
+  font-family: var(--font-mohave), sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.4vw, 20px);
+  color: var(--brand-black);
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+// Clean single column layout for all screen sizes

@@ -1,0 +1,312 @@
+// Get In Touch Section Styles
+.getInTouch {
+  padding: 6rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.container {
+  max-width: 75%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+// Main Title
+.title {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 35px;
+  font-weight: 500; // Medium weight
+  color: var(--brand-black);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 2rem;
+  }
+}
+
+// Main Description
+.description {
+  margin: 0 auto 4rem auto;
+
+  p {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    line-height: 1.2;
+    font-size: clamp(12px, 1.3vw, 20px);
+    font-weight: 400;
+
+    color: var(--brand-black);
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+
+    p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Two Column Grid
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0rem;
+  text-align: left;
+  width: 90%;
+  @media (max-width: 968px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+// Left Column
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.specializedSection {
+  width: 100%;
+  .specializedText {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    line-height: 1.2;
+    font-size: clamp(12px, 1.1vw, 20px);
+    font-weight: 400;
+
+    color: var(--brand-black);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.contactLink {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.1vw, 20px);
+  font-weight: 500;
+  color: var(--brand-black);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--brand-red);
+  }
+}
+
+.emailSection {
+  width: 100%;
+  .sectionTitle {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--brand-black);
+  }
+
+  .email {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    line-height: 1.2;
+    font-size: clamp(12px, 1.1vw, 20px);
+    font-weight: 400;
+    color: var(--brand-black);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--brand-red);
+      text-decoration: underline;
+    }
+  }
+}
+
+// Right Column
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.affiliatedSites {
+  .sectionTitle {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--brand-black);
+    margin-bottom: 1rem;
+  }
+}
+
+.sitesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0rem;
+    position: relative;
+    padding-left: 1rem;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    // Custom bullet point
+    &::before {
+      content: "-";
+      color: var(--brand-black);
+      position: absolute;
+      left: 0;
+      line-height: 1.2;
+      font-size: clamp(12px, 1.1vw, 20px);
+    }
+
+    a {
+      font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica,
+        Arial, sans-serif;
+      line-height: 1.2;
+      font-size: clamp(12px, 1.1vw, 20px);
+      font-weight: 400;
+      color: var(--brand-black);
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--brand-red);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.followUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .sectionTitle {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--brand-black);
+    margin-bottom: 1rem;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+// Social Brand with multiple icons
+.socialBrand {
+  display: flex;
+
+  gap: 0rem;
+
+  &:hover {
+    .brandName {
+      color: var(--brand-red);
+    }
+  }
+}
+
+.socialIconGroup {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    .socialIcon {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.brandName {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.1vw, 20px);
+  font-weight: 400;
+  color: var(--brand-black);
+  transition: color 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  span {
+    font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--brand-black);
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    span {
+      color: var(--brand-red);
+    }
+
+    .socialIcon {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.socialIcon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 0px;
+  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--brand-red);
+  }
+}

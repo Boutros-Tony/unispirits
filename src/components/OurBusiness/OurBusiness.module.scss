@@ -1,0 +1,126 @@
+// Our Business Section Styles
+.ourBusiness {
+  padding: 5rem 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+}
+
+.container {
+  max-width: 95%; // Updated to match Products section
+  margin: 0 auto;
+  padding: 0 2rem; // Same padding as navbar
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+  align-items: center;
+
+  @media (max-width: 968px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+.imageSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    order: 2; // Move image below text on mobile
+  }
+}
+
+.businessLogo {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+
+  @media (max-width: 768px) {
+    max-width: 300px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 250px;
+  }
+}
+
+.textSection {
+  padding-left: 3rem;
+  @media (max-width: 768px) {
+    order: 1; // Keep text on top on mobile
+  }
+}
+
+.companyTitle {
+  // Override default margin for the COMPANY title
+}
+
+.textContent {
+  line-height: 1.2;
+  font-size: clamp(12px, 1.3vw, 20px);
+  color: var(--text-primary);
+
+  p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    font-weight: 700; // Bold weight
+    color: var(--brand-black); // Black, not red
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    text-align: left; // Left align on mobile for better readability
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// Responsive typography adjustments
+@media (max-width: 1200px) {
+  .content {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .content {
+    gap: 2.5rem;
+  }
+}
+
+// Loading state for image
+.businessLogo {
+  transition: opacity 0.3s ease;
+}

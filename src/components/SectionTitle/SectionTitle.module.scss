@@ -1,0 +1,42 @@
+// Section Title Component Styles
+.sectionTitle {
+  position: relative;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  text-transform: uppercase; // Always uppercase
+
+  // Border bottom styling - always same color
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6d6364; // Fixed border color
+    transition: all 0.3s ease;
+  }
+
+  // Font weight variants
+  &.medium {
+    font-weight: 500; // Helvetica Neue Medium
+  }
+
+  &.regular {
+    font-weight: 400; // Helvetica Neue Regular
+  }
+
+  // Text alignment variants
+  &.left {
+    text-align: left;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+}

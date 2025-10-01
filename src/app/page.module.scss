@@ -1,0 +1,75 @@
+// Clean page styles - ready for development
+.page {
+  min-height: 100vh;
+}
+
+// Background wrapper for sections after slider
+.backgroundWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/desktop-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  // Overlay for better content readability if needed
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05); // Very subtle white overlay
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  // Ensure content appears above background
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    background-attachment: scroll; // Fix mobile background attachment issues
+  }
+}
+
+// Content sections after hero slider
+.contentSection {
+  padding: 2rem;
+  padding-top: 5rem; // Extra top padding to clear the navbar
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    padding-top: 4rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+}

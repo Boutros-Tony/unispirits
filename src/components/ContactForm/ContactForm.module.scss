@@ -1,0 +1,259 @@
+// Contact Form Component Styles
+.contactForm {
+  padding: 4rem 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+}
+
+.container {
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+// Form Title "Contact form:"
+.formTitle {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.4vw, 20px);
+  font-weight: 400;
+  color: var(--brand-black);
+  margin-bottom: 2rem;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Form Description Section
+.formDescription {
+  margin-bottom: 3rem;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.descriptionTitle {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.8vw, 30px);
+  font-weight: 500;
+  color: var(--brand-black);
+
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.descriptionText {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.2;
+  font-size: clamp(12px, 1.4vw, 20px);
+  font-weight: 400;
+  color: var(--brand-black);
+
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+// Form Layout
+.form {
+  width: 100%;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 968px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// Left Column
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Right Column
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+// Form Groups
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+// Labels
+.label {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-black);
+  margin-bottom: 0.3rem;
+}
+
+// Dropdown
+.dropdown {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-black);
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 0.8rem 1rem;
+  border-radius: 0;
+  appearance: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  // Custom dropdown arrow
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--brand-black);
+  }
+
+  option {
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+// Input Fields
+.input {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-black);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757272;
+  padding: 0.8rem 0;
+  border-radius: 0;
+
+  &::placeholder {
+    color: #757272;
+    font-style: italic;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom-color: var(--brand-black);
+    background-color: transparent;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+// Textarea
+.textarea {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-black);
+  background-color: #f9f9f9;
+  border: 1px solid #707070;
+  padding: 1rem;
+  border-radius: 0;
+  resize: vertical;
+  min-height: 200px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--brand-black);
+    background-color: #f9f9f9;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    min-height: 150px;
+  }
+}
+
+// Submit Section
+.submitSection {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+// Submit Button
+.submitButton {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-white);
+  background-color: var(--brand-black);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  &:hover {
+    background-color: var(--brand-red);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 13px;
+  }
+}

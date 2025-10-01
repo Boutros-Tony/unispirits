@@ -1,0 +1,148 @@
+// Navbar Styles
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; // Higher z-index to appear above slider
+  background-color: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem; // Reduced vertical padding
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem; // Reduced vertical padding on mobile
+  }
+}
+
+// Logo Section
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  height: auto;
+  width: auto;
+  max-height: 55px; // Increased logo size
+
+  @media (max-width: 768px) {
+    max-height: 45px; // Increased mobile logo size
+  }
+}
+
+// Navigation Links
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.5rem;
+
+  @media (max-width: 968px) {
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    display: none; // Hide on mobile, can implement mobile menu later
+  }
+
+  li {
+    margin: 0;
+    position: relative;
+
+    // Add vertical separator border (except for last item)
+    &:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      right: -1.25rem; // Half of the gap (2.5rem / 2)
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 20px;
+      background-color: var(--brand-black);
+      transition: background-color 0.3s ease;
+    }
+
+    // Change separator to red on hover
+    &:not(:last-child):hover::before {
+      background-color: var(--brand-red);
+    }
+
+    @media (max-width: 968px) {
+      &:not(:last-child)::before {
+        right: -1rem; // Adjust for smaller gap
+      }
+    }
+
+    @media (max-width: 768px) {
+      &:not(:last-child)::before {
+        right: -0.75rem; // Adjust for smaller gap
+      }
+    }
+  }
+}
+
+.navLink {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 500; // Medium weight
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-black);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--brand-red);
+  }
+
+  // Underline effect on hover
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--brand-red);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 968px) {
+    font-size: 0.85rem;
+  }
+}
+
+// Global body padding will be handled in globals.scss
+
+// Mobile responsiveness - can add hamburger menu later
+@media (max-width: 640px) {
+  .navbar {
+    .container {
+      justify-content: center; // Center logo on mobile when nav is hidden
+    }
+  }
+}

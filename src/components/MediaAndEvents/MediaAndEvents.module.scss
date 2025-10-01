@@ -1,0 +1,86 @@
+// Media and Events Section Styles
+.mediaAndEvents {
+  padding: 6rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.titleContainer {
+  max-width: 90%; // Wider container for title
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+}
+
+.mediaContainer {
+  max-width: 65%; // Narrower container for images
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem 5rem; // Vertical 3rem, Horizontal 6rem (double horizontal space)
+  margin-top: 3rem;
+
+  @media (max-width: 968px) {
+    gap: 2.5rem 5rem; // Keep vertical, double horizontal
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 4rem; // Keep vertical, double horizontal
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 2rem; // Single column, same spacing
+  }
+}
+
+.mediaItem {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 150px; // Reduced to match smaller images
+  overflow: visible; // Changed to visible so shadow shows outside
+}
+
+.mediaImage {
+  width: 100%;
+  height: auto; // Auto height to maintain aspect ratio
+  object-fit: contain; // Show full image without cropping
+  transition: all 0.3s ease;
+  display: block; // Remove any gaps below image
+  position: relative;
+  z-index: 1; // Above the shadow
+}

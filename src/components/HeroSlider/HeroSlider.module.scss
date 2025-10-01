@@ -1,0 +1,175 @@
+// Hero Slider Styles
+.heroSlider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%); // Full width breakout from container
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; // Align to left for line design
+}
+
+.slideBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // Fallback background for missing images
+  background-color: #8b4513;
+  background-image: linear-gradient(
+      rgba(139, 69, 19, 0.8),
+      rgba(101, 67, 33, 0.8)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+}
+
+.fixedSlideContent {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  // Left padding for content
+  pointer-events: none; // Allow interaction with slider controls
+
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+  }
+}
+
+.titleContainer {
+  width: 100%;
+  max-width: none; // Remove max-width constraint
+}
+
+.titleWithLine {
+  display: flex;
+  align-items: flex-end;
+  width: 100vw; // Almost full width minus padding
+  padding-right: 2rem;
+  @media (max-width: 768px) {
+    width: calc(100vw - 2rem);
+  }
+}
+
+.titleLine {
+  width: 35vw; // Much wider line - 35% of viewport width
+  height: 5px;
+  background-color: #f8f3e8; // Cream color from your design
+  margin-right: 1rem;
+  flex-shrink: 0;
+  flex: 1;
+  @media (max-width: 768px) {
+    width: 30vw;
+    height: 4px;
+    margin-right: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 25vw;
+    height: 3px;
+    margin-right: 2rem;
+  }
+}
+
+.title {
+  font-family: var(--font-photograph), cursive;
+  font-size: 6vw; // Much bigger to almost fill screen width
+  font-weight: 400;
+  line-height: 0.85; // Even tighter line height
+  color: #f8f3e8; // Cream color from your design
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.01em; // Slightly tighter letter spacing
+
+  text-align: left;
+
+  // Animation
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideInTitle 1.5s ease-out 0.5s forwards;
+
+  @media (max-width: 768px) {
+    font-size: clamp(4rem, 16vw, 12rem);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(3rem, 18vw, 8rem);
+  }
+}
+
+// Title and line animation
+@keyframes slideInTitle {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Line animation
+.titleLine {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: slideInLine 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInLine {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .heroSlider {
+    height: 100vh; // Keep full height on mobile too
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSlider {
+    height: 100vh;
+  }
+}
+
+// Loading state styling
+.slide:not(.swiper-slide-active) .title,
+.slide:not(.swiper-slide-active) .titleLine {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide.swiper-slide-active .title {
+  animation: slideInTitle 1.5s ease-out 0.5s forwards;
+}
+
+.slide.swiper-slide-active .titleLine {
+  animation: slideInLine 1.2s ease-out 0.3s forwards;
+}

@@ -21,6 +21,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -55,18 +59,22 @@ a {
   &.large {
     font-size: 35px;
     letter-spacing: -0.02em;
+    font-size: clamp(20px, 2.2vw, 35px);
 
     @media (max-width: 768px) {
       font-size: 28px;
+      font-size: clamp(18px, 2.2vw, 28px);
+      font-style: italic;
     }
   }
 
   &.medium {
     font-size: 33px;
     letter-spacing: -0.01em;
-
+    font-size: clamp(18px, 1.9vw, 33px);
     @media (max-width: 768px) {
       font-size: 26px;
+      font-size: clamp(14px, 1.5vw, 26px);
     }
   }
 

@@ -32,7 +32,7 @@ export default function ProductCard({
           rel="noopener noreferrer"
           className={styles.moreInfoLink}
         >
-          MORE INFO HERE <img src="/images/info-icon.png" alt="" srcset="" />
+          MORE INFO HERE <img src="/images/info-icon.png" alt="info icon" />
         </a>
       </div>
     </div>

@@ -1,9 +1,10 @@
 // Products and Services Section Styles
 .productsAndServices {
-  padding: 6rem 0; // Extra padding for better visual separation
+  padding: 3rem 0; // Extra padding for better visual separation
 
   @media (max-width: 768px) {
     padding: 4rem 0;
+    padding-top: 2.5rem;
   }
 }
 
@@ -14,14 +15,15 @@
 
   @media (max-width: 768px) {
     padding: 0 1rem;
+    max-width: 100%;
   }
 }
 
 .content {
-  margin-top: 3rem;
+  margin-top: 0rem;
 
   @media (max-width: 768px) {
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
 }
 
@@ -29,6 +31,7 @@
   text-align: left; // Left align to match section title
   line-height: 1.2;
   font-size: clamp(12px, 1.3vw, 20px);
+  font-weight: 300;
   color: var(--text-primary);
   margin-bottom: 4rem;
 
@@ -89,7 +92,7 @@
   font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
     sans-serif;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--brand-red);
   text-align: center;
   letter-spacing: 0.3em;

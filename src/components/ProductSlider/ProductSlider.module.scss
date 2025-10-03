@@ -16,7 +16,7 @@
     font-weight: 100 !important;
   }
   @media (max-width: 768px) {
-    padding: 0 1rem;
+    padding: 0 0rem;
   }
 }
 
@@ -26,7 +26,7 @@
   max-width: 1200px;
   margin: 3rem auto 0 auto;
   position: relative;
-
+  margin-top: 2rem;
   // Prevent partial slides from showing
   overflow: hidden;
 
@@ -41,7 +41,7 @@
   }
 
   @media (max-width: 768px) {
-    width: calc(100% - 6rem);
+    width: 90%;
     margin-top: 2rem;
   }
 }
@@ -54,32 +54,65 @@
   align-items: stretch;
 }
 
-// Products Grid (3 products per slide)
-.productsGrid {
+// Desktop Slider - Show on desktop, hide on mobile
+.desktopSlider {
+  display: block;
+
+  @media (max-width: 968px) {
+    display: none; // Hide on mobile/tablet
+  }
+}
+
+// Mobile Slider - Hide on desktop, show on mobile
+.mobileSlider {
+  display: none;
+
+  @media (max-width: 968px) {
+    display: block; // Show on mobile/tablet
+  }
+}
+
+// Desktop Products Grid (3 products per slide)
+.desktopProductsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
   align-items: stretch;
   width: 100%;
   box-sizing: border-box;
+  padding: 0 2rem; // Add padding to create separation between slides
 
   @media (max-width: 968px) {
     gap: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    gap: 1rem;
+    padding: 0 1.5rem;
   }
 }
 
-// Custom Navigation Arrows - Same style as OurBrands
-.swiperButtonPrev,
-.swiperButtonNext {
+// Mobile Products Grid (2 products per slide)
+.mobileProductsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem; // Add padding to create separation between slides
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // 1 product on small mobile
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 2rem;
+    padding: 0 0.25rem;
+  }
+}
+
+// Desktop Navigation Arrows
+.desktopSwiperButtonPrev,
+.desktopSwiperButtonNext {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -104,30 +137,49 @@
     width: 30px;
     height: 30px;
   }
-
-  @media (max-width: 768px) {
-    width: 40px;
-    height: 40px;
-
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  }
 }
 
-.swiperButtonPrev {
+.desktopSwiperButtonPrev {
   left: -4rem;
+}
 
-  @media (max-width: 768px) {
-    left: -3rem;
+.desktopSwiperButtonNext {
+  right: -4rem;
+}
+
+// Mobile Navigation Arrows
+.mobileSwiperButtonPrev,
+.mobileSwiperButtonNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #9a9696;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--brand-black);
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
   }
 }
 
-.swiperButtonNext {
-  right: -4rem;
+.mobileSwiperButtonPrev {
+  left: -3rem;
+}
 
-  @media (max-width: 768px) {
-    right: -3rem;
-  }
+.mobileSwiperButtonNext {
+  right: -3rem;
 }

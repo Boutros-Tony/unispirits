@@ -1,0 +1,43 @@
+// Half Border Component Styles
+.halfBorder {
+  position: absolute;
+  // width: 45vw; // Removed - handled by animation
+  height: 3px;
+  background-color: #cb1f1b; // Brand red color
+  z-index: 5;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  // Top Left - starts from left side
+  &.topLeft {
+    top: 0;
+    left: 0;
+  }
+
+  // Top Right - starts from right side
+  &.topRight {
+    top: 0;
+    right: 0;
+  }
+
+  // Bottom Left - starts from left side
+  &.bottomLeft {
+    bottom: 0;
+    left: 0;
+  }
+
+  // Bottom Right - starts from right side
+  &.bottomRight {
+    bottom: 0;
+    right: 0;
+  }
+
+  @media (max-width: 768px) {
+    height: 2px; // Slightly thinner on mobile
+  }
+
+  @media (max-width: 480px) {
+    width: 60vw; // Slightly wider on small mobile for better visibility
+    height: 2px;
+  }
+}

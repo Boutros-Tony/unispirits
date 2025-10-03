@@ -14,6 +14,7 @@
   width: 100%;
   @media (max-width: 768px) {
     padding: 0 1rem;
+    max-width: 100%;
   }
 }
 
@@ -48,15 +49,23 @@
   }
 
   @media (max-width: 768px) {
-    padding: 2.5rem 0;
+    flex-direction: column; // Stack vertically on mobile
+    align-items: flex-start; // Align to left (not right)
+    padding: 2rem 0;
 
     &:first-child {
       padding-top: 1rem;
     }
+
+    // Override itemReverse on mobile - all items same layout
+    &.itemReverse {
+      flex-direction: column; // Same as normal items
+      align-items: flex-start; // Same as normal items
+    }
   }
 
   @media (max-width: 480px) {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 }
 
@@ -70,13 +79,15 @@
   overflow: hidden; // Prevent icon distortion
 
   @media (max-width: 768px) {
-    width: 60px;
-    height: 60px;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+    overflow: visible;
   }
 
   @media (max-width: 480px) {
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: auto;
   }
 }
 
@@ -88,11 +99,11 @@
   flex-shrink: 0;
 
   @media (max-width: 768px) {
-    margin: 0 2rem;
+    display: none; // Hide divider on mobile - we use border instead
   }
 
   @media (max-width: 480px) {
-    margin: 0 1.5rem;
+    display: none;
   }
 }
 
@@ -106,6 +117,9 @@
   @media (max-width: 768px) {
     max-width: 35px;
     max-height: 35px;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-1.5px);
   }
 
   @media (max-width: 480px) {
@@ -121,6 +135,12 @@
   &:first-child {
     margin-right: auto;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 1rem; // Space between header and text
+    text-align: left !important; // Always left align on mobile
+  }
 }
 
 .title {
@@ -130,16 +150,61 @@
   font-size: 22px !important; // Bigger title as shown in screenshot
   color: var(--brand-red);
   text-transform: uppercase;
-
   margin-bottom: 0.5rem;
   line-height: 1;
+
   @media (max-width: 768px) {
     font-size: 20px;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
   }
 
   @media (max-width: 480px) {
     font-size: 18px;
+  }
+}
+
+// Hide desktop title on mobile, show mobile title
+.desktopTitle {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Mobile header styles
+.mobileHeader {
+  display: none; // Hidden on desktop
+
+  @media (max-width: 768px) {
+    display: flex !important; // Show on mobile
+    align-items: center;
+    gap: 0 1rem; // 1rem gap between title and icon
+    width: auto; // Auto width to fit content only
+    position: relative;
+
+    // Border under title and icon only (not full width)
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0; // Border extends to end of content
+      height: 2px;
+      background-color: #707070;
+    }
+  }
+}
+
+// Desktop icon container - separate from mobile
+.desktopIconContainer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+
+  @media (max-width: 768px) {
+    display: none; // Hide on mobile - use mobileHeader instead
   }
 }
 

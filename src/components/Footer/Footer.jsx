@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.footerInfo}>
-            <p className={styles.copyright}>© UNISPIRITS ltd 2025</p>
+            <p className={styles.copyright}>© UNISPIRITS srl 2025</p>
             <p className={styles.disclaimer}>
               Please do not share with anyone under the legal purchase age for
               alcohol. Drink responsibly.

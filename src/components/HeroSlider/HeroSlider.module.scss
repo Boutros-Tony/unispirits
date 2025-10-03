@@ -21,7 +21,8 @@
   justify-content: flex-start; // Align to left for line design
 }
 
-.slideBackground {
+// Desktop Background
+.desktopBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -30,6 +31,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: block;
 
   // Fallback background for missing images
   background-color: #8b4513;
@@ -44,6 +46,41 @@
       rgba(255, 255, 255, 0.05) 10px,
       rgba(255, 255, 255, 0.05) 20px
     );
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Mobile Background
+.mobileBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+
+  // Fallback background for missing images
+  background-color: #8b4513;
+  background-image: linear-gradient(
+      rgba(139, 69, 19, 0.8),
+      rgba(101, 67, 33, 0.8)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
 
 .fixedSlideContent {
@@ -58,7 +95,7 @@
   pointer-events: none; // Allow interaction with slider controls
 
   @media (max-width: 768px) {
-    padding-left: 1rem;
+    padding-left: 0rem;
   }
 }
 
@@ -71,29 +108,59 @@
   display: flex;
   align-items: flex-end;
   width: 100vw; // Almost full width minus padding
-  padding-right: 2rem;
+  padding-right: 0rem;
   @media (max-width: 768px) {
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 0rem);
   }
 }
 
 .titleLine {
-  width: 35vw; // Much wider line - 35% of viewport width
   height: 5px;
   background-color: #f8f3e8; // Cream color from your design
-  margin-right: 1rem;
-  flex-shrink: 0;
-  flex: 1;
+  margin-right: 2rem; // Reduced gap between line and text
+  flex: 2; // Takes 2/3 of available space
+
   @media (max-width: 768px) {
-    width: 30vw;
     height: 4px;
-    margin-right: 2.5rem;
+    margin-right: 1.5rem;
   }
 
   @media (max-width: 480px) {
-    width: 25vw;
     height: 3px;
-    margin-right: 2rem;
+    margin-right: 1rem;
+  }
+}
+
+.titleLineAfter {
+  height: 5px;
+  background-color: #f8f3e8; // Same cream color
+  margin-left: 2rem; // Reduced gap between text and line
+  flex: 0.5; // Half the size (about 10% width as requested)
+
+  // Stretch animation like first line but from right
+  opacity: 1;
+  transform: scaleX(0); // Start with no width
+  transform-origin: right; // Grow from right side
+  animation: stretchFromRight 1.5s ease-out 0.5s forwards;
+
+  @media (max-width: 768px) {
+    height: 4px;
+    margin-left: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 3px;
+    margin-left: 1rem;
+  }
+}
+
+// Proper stretching animation for the second line (grows from right)
+@keyframes stretchFromRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -119,7 +186,7 @@
   }
 
   @media (max-width: 480px) {
-    font-size: clamp(3rem, 18vw, 8rem);
+    font-size: clamp(3rem, 2vw, 8rem);
   }
 }
 

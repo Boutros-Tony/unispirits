@@ -1,6 +1,8 @@
 // Get In Touch Section Styles
 .getInTouch {
+  position: relative; // For absolute positioned borders
   padding: 6rem 0;
+  overflow: hidden; // Prevent borders from extending outside
 
   @media (max-width: 768px) {
     padding: 4rem 0;
@@ -18,6 +20,7 @@
   align-items: center;
   @media (max-width: 768px) {
     padding: 0 1rem;
+    max-width: 100%;
   }
 }
 
@@ -35,6 +38,7 @@
   @media (max-width: 768px) {
     font-size: 28px;
     margin-bottom: 2rem;
+    font-style: italic;
   }
 }
 
@@ -58,8 +62,8 @@
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 3rem;
-
+    margin-bottom: 1rem;
+    text-align: left;
     p {
       font-size: 15px;
       line-height: 1.5;
@@ -76,11 +80,13 @@
   width: 90%;
   @media (max-width: 968px) {
     gap: 3rem;
+    max-width: 100%;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 0rem;
+    width: 100%;
   }
 }
 
@@ -90,6 +96,10 @@
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    gap: 0rem;
+  }
 }
 
 .specializedSection {
@@ -155,6 +165,10 @@
   flex-direction: column;
   gap: 3rem;
   align-items: center;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    gap: 0rem;
+  }
 }
 
 .affiliatedSites {
@@ -212,6 +226,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
   .sectionTitle {
     font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
       sans-serif;
@@ -225,7 +243,7 @@
 .socialIcons {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -269,6 +287,12 @@
   color: var(--brand-black);
   transition: color 0.3s ease;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .socialLink {
@@ -281,10 +305,14 @@
   span {
     font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
       sans-serif;
-    font-size: 14px;
+    font-size: clamp(12px, 1.1vw, 20px);
+    letter-spacing: 1px;
     font-weight: 400;
     color: var(--brand-black);
     transition: color 0.3s ease;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 
   &:hover {
@@ -309,4 +337,10 @@
   &:hover {
     background-color: var(--brand-red);
   }
+}
+
+// Hidden icon for spacing - invisible and unclickable
+.hiddenIcon {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

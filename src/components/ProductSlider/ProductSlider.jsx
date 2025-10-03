@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import SectionTitle from "@/components/SectionTitle";
@@ -11,6 +14,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function ProductSlider() {
+  const desktopRef = useRef(null);
+  const mobileRef = useRef(null);
+  const desktopIsInView = useInView(desktopRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const mobileIsInView = useInView(mobileRef, { once: true, margin: "-100px" });
+
   // Sample data - you can change this later
   const products = [
     {
@@ -105,71 +116,160 @@ export default function ProductSlider() {
     },
   ];
 
-  // Group products into slides of 3
-  const slides = [];
+  // Group products into slides of 3 for desktop
+  const desktopSlides = [];
   for (let i = 0; i < products.length; i += 3) {
-    slides.push(products.slice(i, i + 3));
+    desktopSlides.push(products.slice(i, i + 3));
+  }
+
+  // Group products into slides of 2 for mobile
+  const mobileSlides = [];
+  for (let i = 0; i < products.length; i += 2) {
+    mobileSlides.push(products.slice(i, i + 2));
   }
 
   return (
     <section className={styles.productSlider}>
       <div className={styles.container}>
-        <SectionTitle size="medium" weight="regular" color="black">
+        <SectionTitle size="medium" weight="light" color="black">
           Products that may capture your interest
         </SectionTitle>
 
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation={{
-            nextEl: `.${styles.swiperButtonNext}`,
-            prevEl: `.${styles.swiperButtonPrev}`,
+        {/* Desktop Slider - 3 products per slide */}
+        <motion.div
+          ref={desktopRef}
+          className={styles.desktopSlider}
+          initial={{ y: 100, opacity: 0 }}
+          animate={
+            desktopIsInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }
+          }
+          transition={{
+            duration: 1.4,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.3,
           }}
-          autoplay={{
-            delay: 6000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          speed={800}
-          slidesPerView={1}
-          spaceBetween={0}
-          centeredSlides={false}
-          allowTouchMove={true}
-          watchOverflow={true}
-          slidesOffsetBefore={0}
-          slidesOffsetAfter={0}
-          className={styles.swiper}
         >
-          {slides.map((slide, slideIndex) => (
-            <SwiperSlide key={slideIndex} className={styles.slide}>
-              <div className={styles.productsGrid}>
-                {slide.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    image={product.image}
-                    title={product.title}
-                    subtitle={product.subtitle}
-                    specs={product.specs}
-                    link={product.link}
-                    alt={product.alt}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
-          ))}
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: `.${styles.desktopSwiperButtonNext}`,
+              prevEl: `.${styles.desktopSwiperButtonPrev}`,
+            }}
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={true}
+            speed={800}
+            slidesPerView={1}
+            spaceBetween={40}
+            centeredSlides={false}
+            allowTouchMove={true}
+            watchOverflow={true}
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={0}
+            className={styles.swiper}
+          >
+            {desktopSlides.map((slide, slideIndex) => (
+              <SwiperSlide key={slideIndex} className={styles.slide}>
+                <div className={styles.desktopProductsGrid}>
+                  {slide.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      image={product.image}
+                      title={product.title}
+                      subtitle={product.subtitle}
+                      specs={product.specs}
+                      link={product.link}
+                      alt={product.alt}
+                    />
+                  ))}
+                </div>
+              </SwiperSlide>
+            ))}
 
-          {/* Custom Navigation Arrows */}
-          <div className={styles.swiperButtonPrev}>
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M18 22L10 15L18 8" fill="currentColor" />
-            </svg>
-          </div>
-          <div className={styles.swiperButtonNext}>
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M12 8L20 15L12 22" fill="currentColor" />
-            </svg>
-          </div>
-        </Swiper>
+            {/* Desktop Navigation Arrows */}
+            <div className={styles.desktopSwiperButtonPrev}>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M18 22L10 15L18 8" fill="currentColor" />
+              </svg>
+            </div>
+            <div className={styles.desktopSwiperButtonNext}>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12 8L20 15L12 22" fill="currentColor" />
+              </svg>
+            </div>
+          </Swiper>
+        </motion.div>
+
+        {/* Mobile Slider - 2 products per slide */}
+        <motion.div
+          ref={mobileRef}
+          className={styles.mobileSlider}
+          initial={{ y: 100, opacity: 0 }}
+          animate={
+            mobileIsInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }
+          }
+          transition={{
+            duration: 1.4,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.3,
+          }}
+        >
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: `.${styles.mobileSwiperButtonNext}`,
+              prevEl: `.${styles.mobileSwiperButtonPrev}`,
+            }}
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={true}
+            speed={800}
+            slidesPerView={1}
+            spaceBetween={40}
+            centeredSlides={false}
+            allowTouchMove={true}
+            watchOverflow={true}
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={0}
+            className={styles.swiper}
+          >
+            {mobileSlides.map((slide, slideIndex) => (
+              <SwiperSlide key={slideIndex} className={styles.slide}>
+                <div className={styles.mobileProductsGrid}>
+                  {slide.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      image={product.image}
+                      title={product.title}
+                      subtitle={product.subtitle}
+                      specs={product.specs}
+                      link={product.link}
+                      alt={product.alt}
+                    />
+                  ))}
+                </div>
+              </SwiperSlide>
+            ))}
+
+            {/* Mobile Navigation Arrows */}
+            <div className={styles.mobileSwiperButtonPrev}>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M18 22L10 15L18 8" fill="currentColor" />
+              </svg>
+            </div>
+            <div className={styles.mobileSwiperButtonNext}>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12 8L20 15L12 22" fill="currentColor" />
+              </svg>
+            </div>
+          </Swiper>
+        </motion.div>
       </div>
     </section>
   );

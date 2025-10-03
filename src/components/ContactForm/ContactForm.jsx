@@ -1,9 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import styles from "./ContactForm.module.scss";
 
 export default function ContactForm() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const [formData, setFormData] = useState({
     areaOfInterest: "",
     contactName: "",
@@ -28,12 +33,32 @@ export default function ContactForm() {
 
   return (
     <section className={styles.contactForm}>
-      <div className={styles.container}>
+      <div ref={ref} className={styles.container}>
         {/* Contact Form Title */}
-        <h3 className={styles.formTitle}>Contact form:</h3>
+        <motion.h3
+          className={styles.formTitle}
+          initial={{ y: 50, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.2,
+          }}
+        >
+          Contact form:
+        </motion.h3>
 
         {/* Form Description */}
-        <div className={styles.formDescription}>
+        <motion.div
+          className={styles.formDescription}
+          initial={{ y: 50, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.4,
+          }}
+        >
           <h4 className={styles.descriptionTitle}>
             We would love to hear from you
           </h4>
@@ -41,15 +66,36 @@ export default function ContactForm() {
             Get in touch with Unispirits. Reach out for enquiries and
             partnerships.
           </p>
-        </div>
+        </motion.div>
 
         {/* Form Content */}
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <motion.form
+          onSubmit={handleSubmit}
+          className={styles.form}
+          initial={{ y: 50, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.6,
+          }}
+        >
           <div className={styles.formGrid}>
             {/* Left Column - Form Fields */}
             <div className={styles.leftColumn}>
               {/* Area or Location Dropdown */}
-              <div className={styles.formGroup}>
+              <motion.div
+                className={styles.formGroup}
+                initial={{ y: 50, opacity: 0 }}
+                animate={
+                  isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 0.8,
+                }}
+              >
                 <select
                   name="areaOfInterest"
                   value={formData.areaOfInterest}
@@ -64,10 +110,21 @@ export default function ContactForm() {
                   <option value="africa">Africa</option>
                   <option value="oceania">Oceania</option>
                 </select>
-              </div>
+              </motion.div>
 
               {/* Contact Name */}
-              <div className={styles.formGroup}>
+              <motion.div
+                className={styles.formGroup}
+                initial={{ y: 50, opacity: 0 }}
+                animate={
+                  isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.0,
+                }}
+              >
                 <label htmlFor="contactName" className={styles.label}>
                   Contact name:
                 </label>
@@ -77,13 +134,24 @@ export default function ContactForm() {
                   name="contactName"
                   value={formData.contactName}
                   onChange={handleChange}
-                  placeholder="Input default"
+                  placeholder="Contact name"
                   className={styles.input}
                 />
-              </div>
+              </motion.div>
 
               {/* Contact Email */}
-              <div className={styles.formGroup}>
+              <motion.div
+                className={styles.formGroup}
+                initial={{ y: 50, opacity: 0 }}
+                animate={
+                  isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.2,
+                }}
+              >
                 <label htmlFor="contactEmail" className={styles.label}>
                   Contact email:
                 </label>
@@ -93,13 +161,24 @@ export default function ContactForm() {
                   name="contactEmail"
                   value={formData.contactEmail}
                   onChange={handleChange}
-                  placeholder="Input default"
+                  placeholder="Email"
                   className={styles.input}
                 />
-              </div>
+              </motion.div>
 
               {/* Subject */}
-              <div className={styles.formGroup}>
+              <motion.div
+                className={styles.formGroup}
+                initial={{ y: 50, opacity: 0 }}
+                animate={
+                  isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.4,
+                }}
+              >
                 <label htmlFor="subject" className={styles.label}>
                   Subject:
                 </label>
@@ -109,15 +188,26 @@ export default function ContactForm() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Input default"
+                  placeholder="Subject"
                   className={styles.input}
                 />
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Column - Message */}
             <div className={styles.rightColumn}>
-              <div className={styles.formGroup}>
+              <motion.div
+                className={styles.formGroup}
+                initial={{ y: 50, opacity: 0 }}
+                animate={
+                  isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.6,
+                }}
+              >
                 <label htmlFor="message" className={styles.label}>
                   Message:
                 </label>
@@ -129,16 +219,28 @@ export default function ContactForm() {
                   className={styles.textarea}
                   rows={8}
                 />
-                <button type="submit" className={styles.submitButton}>
+                <motion.button
+                  type="submit"
+                  className={styles.submitButton}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={
+                    isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }
+                  }
+                  transition={{
+                    duration: 1.2,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: 1.8,
+                  }}
+                >
                   Submit
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </div>
           </div>
 
           {/* Submit Button */}
           <div className={styles.submitSection}></div>
-        </form>
+        </motion.form>
       </div>
     </section>
   );

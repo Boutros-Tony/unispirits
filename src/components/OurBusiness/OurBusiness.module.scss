@@ -4,6 +4,7 @@
 
   @media (max-width: 768px) {
     padding: 3rem 0;
+    padding-bottom: 0;
   }
 }
 
@@ -14,6 +15,7 @@
 
   @media (max-width: 768px) {
     padding: 0 1rem;
+    max-width: 100%;
   }
 }
 
@@ -31,7 +33,7 @@
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
 }
 
@@ -63,21 +65,84 @@
   padding-left: 3rem;
   @media (max-width: 768px) {
     order: 1; // Keep text on top on mobile
+    padding-left: 0;
   }
 }
 
+// Company title styling
 .companyTitle {
-  // Override default margin for the COMPANY title
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    // Ensure visibility on mobile
+    position: relative;
+    z-index: 10;
+  }
+}
+
+// SectionTitle styles for Company title
+.sectionTitle {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  display: inline-block; // Same as main SectionTitle
+  padding-bottom: 0.5rem; // Same as main SectionTitle
+
+  &.medium {
+    font-size: 33px;
+  }
+
+  &.red {
+    color: var(--brand-red);
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  &.regular {
+    font-weight: 400;
+  }
+
+  // Animated border using pseudo-element - exactly like main title
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6d6364;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.8s ease;
+    transition-delay: 0.3s;
+  }
+
+  // Show border when in view (this will be controlled by a class)
+  &.showBorder::after {
+    transform: scaleX(1);
+  }
 }
 
 .textContent {
+  font-family: var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   line-height: 1.2;
   font-size: clamp(12px, 1.3vw, 20px);
   color: var(--text-primary);
+  font-weight: 300; // Use Helvetica Neue Light (300)
 
   p {
     margin-bottom: 1.5rem;
     text-align: justify;
+    font-weight: 300; // Use Helvetica Neue Light (300)
 
     &:last-child {
       margin-bottom: 0;

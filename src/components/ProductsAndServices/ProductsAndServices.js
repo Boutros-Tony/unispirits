@@ -1,9 +1,17 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import VisionMission from "@/components/VisionMission";
 import styles from "./ProductsAndServices.module.scss";
 
 export default function ProductsAndServices() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section className={styles.productsAndServices}>
       <div className={styles.container}>
@@ -11,8 +19,18 @@ export default function ProductsAndServices() {
           Products and Services
         </SectionTitle>
 
-        <div className={styles.content}>
-          <div className={styles.textContent}>
+        <div ref={ref} className={styles.content}>
+          {/* Text slides from bottom */}
+          <motion.div
+            className={styles.textContent}
+            initial={{ y: 50, opacity: 0 }}
+            animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+            transition={{
+              duration: 1.4,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 0.4,
+            }}
+          >
             <p>
               <strong>Unispirits</strong> specializes in brand development, from
               conceptualization to realization, and in creating exclusive
@@ -33,17 +51,41 @@ export default function ProductsAndServices() {
               luxury is central to everything we do delivering the finest taste,
               style, and distinction.
             </p>
-          </div>
+          </motion.div>
 
           <div className={styles.imageSection}>
-            <Image
-              src="/images/products-and-services-section.png"
-              alt="A World of Spirits - UniSpirits product range illustration"
-              width={600}
-              height={200}
-              className={styles.spiritsIllustration}
-            />
-            <h3 className={styles.imageTitle}>A WORLD OF SPIRITS</h3>
+            {/* Image slides from right */}
+            <motion.div
+              initial={{ x: 150, opacity: 0, width: "90%" }}
+              animate={isInView ? { x: 0, opacity: 1 } : { x: 150, opacity: 0 }}
+              transition={{
+                duration: 1.6,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.8,
+              }}
+            >
+              <Image
+                src="/images/products-and-services-section.png"
+                alt="A World of Spirits - UniSpirits product range illustration"
+                width={600}
+                height={200}
+                className={styles.spiritsIllustration}
+              />
+            </motion.div>
+
+            {/* Small title slides from bottom */}
+            <motion.h3
+              className={styles.imageTitle}
+              initial={{ y: 30, opacity: 0 }}
+              animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+              transition={{
+                duration: 1.2,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 1.3,
+              }}
+            >
+              A WORLD OF SPIRITS
+            </motion.h3>
           </div>
         </div>
       </div>

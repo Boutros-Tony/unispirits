@@ -1,7 +1,15 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import styles from "./VisionMission.module.scss";
 
 export default function VisionMission() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const items = [
     {
       id: "vision",
@@ -38,36 +46,133 @@ export default function VisionMission() {
   return (
     <div className={styles.visionMission}>
       <div className={styles.container}>
-        <div className={styles.grid}>
-          {items.map((item, index) => (
-            <div
-              key={item.id}
-              className={`${styles.item} ${
-                index % 2 === 1 ? styles.itemReverse : ""
-              }`}
-            >
-              <div className={styles.iconContainer}>
-                <Image
-                  src={item.icon}
-                  alt={`${item.title} icon`}
-                  width={40}
-                  height={40}
-                  className={styles.icon}
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-              <div className={styles.divider}></div>
-              <div className={styles.content}>
-                <h3 className={`mohave italic medium red ${styles.title}`}>
-                  {item.title}
-                </h3>
-                <p
-                  className={`mohave light medium black ${styles.text}`}
-                  dangerouslySetInnerHTML={{ __html: item.text }}
-                />
-              </div>
-            </div>
-          ))}
+        <div ref={ref} className={styles.grid}>
+          {items.map((item, index) => {
+            const isReverse = index % 2 === 1;
+            const baseDelay = index * 0.5; // Base delay for each box - 0.5s between boxes
+
+            return (
+              <motion.div
+                key={item.id}
+                className={`${styles.item} ${
+                  isReverse ? styles.itemReverse : ""
+                }`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: baseDelay,
+                }}
+              >
+                {/* Mobile Header - Title left, Icon right */}
+                <motion.div
+                  className={styles.mobileHeader}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  }
+                  transition={{
+                    duration: 1.0,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: baseDelay + 0.3,
+                  }}
+                >
+                  <h3 className={`mohave italic medium red ${styles.title}`}>
+                    {item.title}
+                  </h3>
+                  <motion.div
+                    className={styles.iconContainer}
+                    initial={{ x: isReverse ? 50 : -50, opacity: 0 }}
+                    animate={
+                      isInView
+                        ? { x: 0, opacity: 1 }
+                        : { x: isReverse ? 50 : -50, opacity: 0 }
+                    }
+                    transition={{
+                      duration: 1.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.5,
+                    }}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={`${item.title} icon`}
+                      width={40}
+                      height={40}
+                      className={styles.icon}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </motion.div>
+                </motion.div>
+
+                {/* Desktop Icon Container (hidden on mobile) */}
+                <motion.div
+                  className={styles.desktopIconContainer}
+                  initial={{ x: isReverse ? 100 : -100, opacity: 0 }}
+                  animate={
+                    isInView
+                      ? { x: 0, opacity: 1 }
+                      : { x: isReverse ? 100 : -100, opacity: 0 }
+                  }
+                  transition={{
+                    duration: 1.6,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: baseDelay + 0.4,
+                  }}
+                >
+                  <Image
+                    src={item.icon}
+                    alt={`${item.title} icon`}
+                    width={40}
+                    height={40}
+                    className={styles.icon}
+                    style={{ objectFit: "contain" }}
+                  />
+                </motion.div>
+
+                {/* Desktop Layout - Divider (hidden on mobile) */}
+                <motion.div
+                  className={styles.divider}
+                  initial={{ scaleY: 0 }}
+                  animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                  transition={{
+                    duration: 1.8,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: baseDelay + 0.6,
+                  }}
+                  style={{ transformOrigin: "top" }}
+                ></motion.div>
+
+                {/* Content */}
+                <motion.div
+                  className={styles.content}
+                  initial={{ y: 60, opacity: 0 }}
+                  animate={
+                    isInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }
+                  }
+                  transition={{
+                    duration: 1.4,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: baseDelay + 0.8,
+                  }}
+                >
+                  {/* Title for desktop only */}
+                  <h3
+                    className={`mohave italic medium red ${styles.title} ${styles.desktopTitle}`}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className={`mohave light medium black ${styles.text}`}
+                    dangerouslySetInnerHTML={{ __html: item.text }}
+                  />
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -13,26 +13,43 @@ export default function HeroSlider() {
     {
       id: 1,
       image: "/images/top-slider-1.jpg",
+      mobileImage: "/images/top-slider-1-mobile.jpg",
       alt: "Premium spirits bartender crafting cocktails",
     },
     {
       id: 2,
       image: "/images/top-slider-2.jpg",
+      mobileImage: "/images/top-slider-2-mobile.png",
       alt: "Luxury bar with premium bottles",
     },
     {
       id: 3,
       image: "/images/top-slider-3.jpg",
+      mobileImage: "/images/top-slider-3-mobile.png",
       alt: "Professional mixologist at work",
     },
     {
       id: 4,
       image: "/images/top-slider-4.jpg",
+      mobileImage: "/images/top-slider-4-mobile.jpg",
       alt: "Elegant cocktail presentation",
     },
     {
       id: 5,
       image: "/images/top-slider-5.jpg",
+      mobileImage: "/images/top-slider-5-mobile.png",
+      alt: "Premium spirits collection display",
+    },
+    {
+      id: 6,
+      image: "/images/top-slider-1.jpg", // Using existing image for desktop
+      mobileImage: "/images/top-slider-6-mobile.png",
+      alt: "Premium spirits collection display",
+    },
+    {
+      id: 7,
+      image: "/images/top-slider-2.jpg", // Using existing image for desktop
+      mobileImage: "/images/top-slider-7-mobile.png",
       alt: "Premium spirits collection display",
     },
   ];
@@ -54,11 +71,19 @@ export default function HeroSlider() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className={styles.slide}>
+            {/* Desktop Background */}
             <div
-              className={styles.slideBackground}
+              className={styles.desktopBackground}
               style={{
-                // Fallback gradient while images are loading
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${slide.image})`,
+              }}
+            />
+
+            {/* Mobile Background */}
+            <div
+              className={styles.mobileBackground}
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${slide.mobileImage})`,
               }}
             />
           </SwiperSlide>
@@ -72,6 +97,7 @@ export default function HeroSlider() {
               <h1 className={`signature white ${styles.title}`}>
                 Sheer Excellence
               </h1>
+              <div className={styles.titleLineAfter}></div>
             </div>
           </div>
         </div>

@@ -14,24 +14,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 200px;
-  padding: 3rem 1rem;
+  height: 400px;
+  padding: 1.5rem 1rem;
 
   @media (max-width: 768px) {
     min-height: 150px;
+    height: auto;
     padding: 0.5rem;
   }
 }
 
 .productImage {
   width: auto;
-  height: auto;
+  height: 100%;
   max-width: 100%;
-  max-height: 250px;
+
   object-fit: contain;
 
   @media (max-width: 768px) {
-    max-height: auto;
+    max-height: 250px;
   }
 }
 
@@ -83,6 +84,11 @@
   }
 }
 
+.linkContainer {
+  position: relative;
+  width: 100%;
+}
+
 .moreInfoLink {
   font-family: var(--font-mohave), sans-serif;
   font-size: 15px;
@@ -113,5 +119,97 @@
   @media (max-width: 768px) {
     font-size: 10px;
     padding: 0.6rem 1.2rem;
+  }
+}
+
+// Links Container - Same as moreInfoLink but with links
+.linksContainer {
+  font-family: var(--font-mohave), sans-serif;
+  font-size: 15px;
+  font-weight: 300; // Mohave light
+  color: var(--brand-black);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.5rem;
+  background-color: #cfa97c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  align-self: center;
+  width: 100%;
+  position: relative;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--brand-black);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.linksRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0;
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.5rem;
+  color: var(--brand-black);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex: 1;
+  border-right: 1px solid var(--brand-black);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+.linkIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--brand-black);
+
+  @media (max-width: 768px) {
+    width: 16px;
+    height: 16px;
   }
 }

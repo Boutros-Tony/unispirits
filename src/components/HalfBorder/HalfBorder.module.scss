@@ -5,9 +5,7 @@
   height: 3px;
   background-color: #cb1f1b; // Brand red color
   z-index: 5;
-  @media (max-width: 768px) {
-    display: none;
-  }
+
   // Top Left - starts from left side
   &.topLeft {
     top: 0;

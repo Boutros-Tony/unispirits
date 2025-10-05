@@ -19,23 +19,19 @@ export default function Footer() {
       {/* Black Footer Section */}
       <div className={styles.footerContent}>
         <div className={styles.container}>
-          <div className={styles.footerLinks}>
-            <a href="#" className={styles.link}>
-              Conditions of Use
-            </a>
-            <a href="#" className={styles.link}>
-              Privacy and Cookie Notice
-            </a>
-            <a href="#" className={styles.link}>
-              Drink responsibly
-            </a>
-          </div>
-
           <div className={styles.footerInfo}>
             <p className={styles.copyright}>© UNISPIRITS srl 2025</p>
             <p className={styles.disclaimer}>
               Please do not share with anyone under the legal purchase age for
-              alcohol. Drink responsibly.
+              alcohol.{" "}
+              <a
+                href="https://responsibledrinking.eu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.responsibleLink}
+              >
+                Drink responsibly.
+              </a>
             </p>
           </div>
         </div>

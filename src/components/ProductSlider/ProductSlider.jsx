@@ -32,15 +32,27 @@ export default function ProductSlider() {
       specs: "700ML | 43% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-2.pdf",
+        pdf2: "/pdfs/media-and-events-10.pdf",
+        website: "https://themysticgrove.com/our-creations/chapter-9/",
+        instagram: "https://www.instagram.com/mysticgrovegin",
+      },
     },
     {
       id: 2,
       image: "/images/MD-whisky.png",
       title: "The Mystic DUKE",
-      subtitle: "Malt & Grain SPIRITUOUS",
+      subtitle: "Malt & Grain Whisky",
       specs: "750ML | 40% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-11.pdf",
+        pdf2: "/pdfs/media-and-events-5.pdf",
+
+        instagram: "https://www.instagram.com/themysticduke",
+      },
     },
     {
       id: 3,
@@ -50,6 +62,9 @@ export default function ProductSlider() {
       specs: "750ML | 13% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-8.pdf",
+      },
     },
     {
       id: 4,
@@ -59,6 +74,12 @@ export default function ProductSlider() {
       specs: "700ML | 47% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-3.pdf",
+        pdf2: "/pdfs/media-and-events-10.pdf",
+        website: "https://themysticgrove.com/our-creations/chapter-12/",
+        instagram: "https://www.instagram.com/mysticgrovegin",
+      },
     },
     {
       id: 5,
@@ -68,6 +89,12 @@ export default function ProductSlider() {
       specs: "750ML | 40% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-4.pdf",
+        pdf2: "/pdfs/media-and-events-11.pdf",
+
+        instagram: "https://www.instagram.com/themysticduke",
+      },
     },
     {
       id: 6,
@@ -77,6 +104,9 @@ export default function ProductSlider() {
       specs: "750ML | 11% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-8.pdf",
+      },
     },
     {
       id: 7,
@@ -86,6 +116,12 @@ export default function ProductSlider() {
       specs: "700ML | 43% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-1.pdf",
+        pdf2: "/pdfs/media-and-events-10.pdf",
+        website: "https://themysticgrove.com/our-creations/chapter-8/",
+        instagram: "https://www.instagram.com/mysticgrovegin",
+      },
     },
     {
       id: 8,
@@ -95,6 +131,12 @@ export default function ProductSlider() {
       specs: "750ML | 40% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-6.pdf",
+        pdf2: "/pdfs/media-and-events-11.pdf",
+
+        instagram: "https://www.instagram.com/themysticduke",
+      },
     },
     {
       id: 9,
@@ -104,6 +146,9 @@ export default function ProductSlider() {
       specs: "750ML | 12% Alc./Vol.",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-8.pdf",
+      },
     },
     {
       id: 10,
@@ -113,6 +158,9 @@ export default function ProductSlider() {
       specs: "750ML | 53% Alc./Vol..",
       link: "https://google.com",
       alt: "Mystic Grove Chapter IX Blue Indigo Gin",
+      links: {
+        pdf1: "/pdfs/media-and-events-7.pdf",
+      },
     },
   ];
 
@@ -156,7 +204,7 @@ export default function ProductSlider() {
               prevEl: `.${styles.desktopSwiperButtonPrev}`,
             }}
             autoplay={{
-              delay: 6000,
+              delay: 4000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -183,6 +231,7 @@ export default function ProductSlider() {
                       specs={product.specs}
                       link={product.link}
                       alt={product.alt}
+                      links={product.links}
                     />
                   ))}
                 </div>
@@ -251,6 +300,7 @@ export default function ProductSlider() {
                       specs={product.specs}
                       link={product.link}
                       alt={product.alt}
+                      links={product.links}
                     />
                   ))}
                 </div>

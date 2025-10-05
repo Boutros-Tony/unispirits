@@ -23,6 +23,26 @@
   flex-direction: column;
 }
 
+// Desktop Grid - Show on desktop, hide on mobile
+.desktopGrid {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Mobile Grid - Hide on desktop, show on mobile
+.mobileGrid {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .item {
   display: flex;
   align-items: center;

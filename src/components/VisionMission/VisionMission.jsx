@@ -43,58 +43,95 @@ export default function VisionMission() {
     },
   ];
 
+  // Mobile order: Vision, Mission, Goal, Strategy, Target
+  const mobileItems = [
+    items[0], // Vision
+    items[2], // Mission
+    items[3], // Goal
+    items[1], // Strategy
+    items[4], // Target
+  ];
+
   return (
     <div className={styles.visionMission}>
       <div className={styles.container}>
         <div ref={ref} className={styles.grid}>
-          {items.map((item, index) => {
-            const isReverse = index % 2 === 1;
-            const baseDelay = index * 0.5; // Base delay for each box - 0.5s between boxes
+          {/* Desktop - Original order */}
+          <div className={styles.desktopGrid}>
+            {items.map((item, index) => {
+              const isReverse = index % 2 === 1;
+              const baseDelay = index * 0.5; // Base delay for each box - 0.5s between boxes
 
-            return (
-              <motion.div
-                key={item.id}
-                className={`${styles.item} ${
-                  isReverse ? styles.itemReverse : ""
-                }`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-                }
-                transition={{
-                  duration: 1.2,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  delay: baseDelay,
-                }}
-              >
-                {/* Mobile Header - Title left, Icon right */}
+              return (
                 <motion.div
-                  className={styles.mobileHeader}
-                  initial={{ opacity: 0, y: 30 }}
+                  key={`desktop-${item.id}`}
+                  className={`${styles.item} ${
+                    isReverse ? styles.itemReverse : ""
+                  }`}
+                  initial={{ opacity: 0, y: 50 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
                   }
                   transition={{
-                    duration: 1.0,
+                    duration: 1.2,
                     ease: [0.25, 0.46, 0.45, 0.94],
-                    delay: baseDelay + 0.3,
+                    delay: baseDelay,
                   }}
                 >
-                  <h3 className={`mohave italic medium red ${styles.title}`}>
-                    {item.title}
-                  </h3>
+                  {/* Mobile Header - Title left, Icon right */}
                   <motion.div
-                    className={styles.iconContainer}
-                    initial={{ x: isReverse ? 50 : -50, opacity: 0 }}
+                    className={styles.mobileHeader}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={
+                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                    }
+                    transition={{
+                      duration: 1.0,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.3,
+                    }}
+                  >
+                    <h3 className={`mohave italic medium red ${styles.title}`}>
+                      {item.title}
+                    </h3>
+                    <motion.div
+                      className={styles.iconContainer}
+                      initial={{ x: isReverse ? 50 : -50, opacity: 0 }}
+                      animate={
+                        isInView
+                          ? { x: 0, opacity: 1 }
+                          : { x: isReverse ? 50 : -50, opacity: 0 }
+                      }
+                      transition={{
+                        duration: 1.4,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: baseDelay + 0.5,
+                      }}
+                    >
+                      <Image
+                        src={item.icon}
+                        alt={`${item.title} icon`}
+                        width={40}
+                        height={40}
+                        className={styles.icon}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Desktop Icon Container (hidden on mobile) */}
+                  <motion.div
+                    className={styles.desktopIconContainer}
+                    initial={{ x: isReverse ? 100 : -100, opacity: 0 }}
                     animate={
                       isInView
                         ? { x: 0, opacity: 1 }
-                        : { x: isReverse ? 50 : -50, opacity: 0 }
+                        : { x: isReverse ? 100 : -100, opacity: 0 }
                     }
                     transition={{
-                      duration: 1.4,
+                      duration: 1.6,
                       ease: [0.25, 0.46, 0.45, 0.94],
-                      delay: baseDelay + 0.5,
+                      delay: baseDelay + 0.4,
                     }}
                   >
                     <Image
@@ -106,73 +143,129 @@ export default function VisionMission() {
                       style={{ objectFit: "contain" }}
                     />
                   </motion.div>
-                </motion.div>
 
-                {/* Desktop Icon Container (hidden on mobile) */}
-                <motion.div
-                  className={styles.desktopIconContainer}
-                  initial={{ x: isReverse ? 100 : -100, opacity: 0 }}
-                  animate={
-                    isInView
-                      ? { x: 0, opacity: 1 }
-                      : { x: isReverse ? 100 : -100, opacity: 0 }
-                  }
-                  transition={{
-                    duration: 1.6,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                    delay: baseDelay + 0.4,
-                  }}
-                >
-                  <Image
-                    src={item.icon}
-                    alt={`${item.title} icon`}
-                    width={40}
-                    height={40}
-                    className={styles.icon}
-                    style={{ objectFit: "contain" }}
-                  />
-                </motion.div>
+                  {/* Desktop Layout - Divider (hidden on mobile) */}
+                  <motion.div
+                    className={styles.divider}
+                    initial={{ scaleY: 0 }}
+                    animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                    transition={{
+                      duration: 1.8,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.6,
+                    }}
+                    style={{ transformOrigin: "top" }}
+                  ></motion.div>
 
-                {/* Desktop Layout - Divider (hidden on mobile) */}
-                <motion.div
-                  className={styles.divider}
-                  initial={{ scaleY: 0 }}
-                  animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-                  transition={{
-                    duration: 1.8,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                    delay: baseDelay + 0.6,
-                  }}
-                  style={{ transformOrigin: "top" }}
-                ></motion.div>
-
-                {/* Content */}
-                <motion.div
-                  className={styles.content}
-                  initial={{ y: 60, opacity: 0 }}
-                  animate={
-                    isInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }
-                  }
-                  transition={{
-                    duration: 1.4,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                    delay: baseDelay + 0.8,
-                  }}
-                >
-                  {/* Title for desktop only */}
-                  <h3
-                    className={`mohave italic medium red ${styles.title} ${styles.desktopTitle}`}
+                  {/* Content */}
+                  <motion.div
+                    className={styles.content}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={
+                      isInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }
+                    }
+                    transition={{
+                      duration: 1.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.8,
+                    }}
                   >
-                    {item.title}
-                  </h3>
-                  <p
-                    className={`mohave light medium black ${styles.text}`}
-                    dangerouslySetInnerHTML={{ __html: item.text }}
-                  />
+                    {/* Title for desktop only */}
+                    <h3
+                      className={`mohave italic medium red ${styles.title} ${styles.desktopTitle}`}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className={`mohave light medium black ${styles.text}`}
+                      dangerouslySetInnerHTML={{ __html: item.text }}
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Mobile - Reordered: Vision, Mission, Goal, Strategy, Target */}
+          <div className={styles.mobileGrid}>
+            {mobileItems.map((item, index) => {
+              const baseDelay = index * 0.5; // Base delay for each box - 0.5s between boxes
+
+              return (
+                <motion.div
+                  key={`mobile-${item.id}`}
+                  className={styles.item}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                  }
+                  transition={{
+                    duration: 1.2,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: baseDelay,
+                  }}
+                >
+                  {/* Mobile Header - Title left, Icon right */}
+                  <motion.div
+                    className={styles.mobileHeader}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={
+                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                    }
+                    transition={{
+                      duration: 1.0,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.3,
+                    }}
+                  >
+                    <h3 className={`mohave italic medium red ${styles.title}`}>
+                      {item.title}
+                    </h3>
+                    <motion.div
+                      className={styles.iconContainer}
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={
+                        isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }
+                      }
+                      transition={{
+                        duration: 1.4,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: baseDelay + 0.5,
+                      }}
+                    >
+                      <Image
+                        src={item.icon}
+                        alt={`${item.title} icon`}
+                        width={40}
+                        height={40}
+                        className={styles.icon}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Content */}
+                  <motion.div
+                    className={styles.content}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={
+                      isInView ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }
+                    }
+                    transition={{
+                      duration: 1.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: baseDelay + 0.8,
+                    }}
+                  >
+                    <p
+                      className={`mohave light medium black ${styles.text}`}
+                      dangerouslySetInnerHTML={{ __html: item.text }}
+                    />
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
